@@ -9,12 +9,13 @@ const pari=document.getElementById("pari")
 const dispari=document.getElementById("dispari")
 
 
-let controllo=true
+let controllo
 let randomNumber=0
 let numUtente=0
-function somma(a,b){
-     somma=a+b
-     if ((a+b)%2===0){
+let somma=0
+function pariODispari(somma){
+     somma=numUtente+randomNumber
+     if ((somma)%2===0){
         controllo=true
      }else{
         controllo=false
@@ -32,11 +33,14 @@ prosegui.addEventListener('click', inserisciUnNumero)
 
 prosegui.addEventListener('click',function(){
     document.writeln(`<p>l'avversario ha "buttato" il numero: ${randomico(1,5)} </p>`)
-    if ( somma(numUtente,randomNumber) && pari.checked) {
+    if (pariODispari(somma) && pari.checked) {
+        document.writeln("<p>hai vinto!</p>")
+    }else if(!(pariODispari(somma) && dispari.checked)){
         document.writeln("<p>hai vinto!</p>")
     }else{
-        document.writeln("<p>hai perso!</p>")
+        document.writeln("hai perso!")
     }
-    console.log(pari)
-    console.log(controllo)
+    
 })
+console.log(pari.checked)
+console.log(pariODispari(somma))
